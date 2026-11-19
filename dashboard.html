@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — COMMONPLACE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../css/dashboard.css" />
+  <link rel="stylesheet" href="../css/polish.css" />
+</head>
+<body class="dash-body">
+
+  <div class="dash-shell">
+
+    <!-- ═══════════ SIDEBAR ═══════════ -->
+    <aside class="dash-sidebar" id="dash-sidebar">
+      <div class="sidebar-top">
+        <a href="index.html" class="logo">
+          <svg class="logo-mark" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L22 12L12 22L2 12L12 2Z" fill="currentColor"/>
+          </svg>
+          <span>COMMONPLACE</span>
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <span class="nav-group-label">Library</span>
+          <a href="dashboard.html" class="nav-item active">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12l9-9 9 9M5 10v10h14V10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Overview</span>
+          </a>
+          <a href="items.html" class="nav-item">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h16M4 18h10" stroke-linecap="round"/></svg>
+            <span>All Items</span>
+            <span class="nav-badge" id="nav-count-items">0</span>
+          </a>
+          <a href="#" class="nav-item" data-view="collections">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h6l2 2h10v10H3V7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Collections</span>
+          </a>
+          <a href="#" class="nav-item" data-view="favorites">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Favorites</span>
+          </a>
+          <a href="explore.html" class="nav-item">
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M12 3l1.9 5.8L20 10.7l-4.9 4.8 1.2 6.8-6.3-3.3-6.3 3.3 1.2-6.8L3 10.7l6.1-1.9L12 3z" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <span>Explore</span>
+</a>
+        </div>
+
+        <div class="nav-group">
+          <span class="nav-group-label">Account</span>
+          <a href="settings.html" class="nav-item">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 008.6 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 8.6a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Settings</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-user">
+        <div class="user-avatar" id="user-avatar">R</div>
+        <div class="user-info">
+          <span class="user-name" id="user-name">Guest</span>
+          <span class="user-email" id="user-email">guest@commonplace.app</span>
+        </div>
+        <button class="logout-btn" id="logout-btn" aria-label="Sign out">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ═══════════ MAIN ═══════════ -->
+    <main class="dash-main">
+
+      <!-- Top bar -->
+      <header class="dash-topbar">
+        <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg>
+        </button>
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3" stroke-linecap="round"/></svg>
+          <input type="search" id="search-input" placeholder="Search your library..." autocomplete="off" />
+          <kbd class="search-kbd">⌘K</kbd>
+        </div>
+        <button class="btn btn-primary btn-add" id="open-quick-add">
+          <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v10M3 8h10" stroke-linecap="round"/></svg>
+          <span>Quick Add</span>
+        </button>
+      </header>
+
+      <!-- Content -->
+      <div class="dash-content">
+
+        <!-- Welcome -->
+        <section class="welcome reveal">
+          <div>
+            <span class="welcome-eyebrow" id="greeting-time">Good morning</span>
+            <h1 class="welcome-title">Welcome back, <em class="editorial" id="greeting-name">friend.</em></h1>
+            <p class="welcome-date" id="current-date">—</p>
+          </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="stats-grid">
+          <div class="stat-card reveal" data-delay="1">
+            <div class="stat-label">Total Items</div>
+            <div class="stat-value" data-stat="total">0</div>
+            <div class="stat-meta">in your library</div>
+          </div>
+          <div class="stat-card reveal" data-delay="2">
+            <div class="stat-label">Collections</div>
+            <div class="stat-value" data-stat="collections">0</div>
+            <div class="stat-meta">active collections</div>
+          </div>
+          <div class="stat-card reveal" data-delay="3">
+            <div class="stat-label">Quotes</div>
+            <div class="stat-value" data-stat="quotes">0</div>
+            <div class="stat-meta">saved quotes</div>
+          </div>
+          <div class="stat-card reveal" data-delay="4">
+            <div class="stat-label">Notes</div>
+            <div class="stat-value" data-stat="notes">0</div>
+            <div class="stat-meta">personal notes</div>
+          </div>
+        </section>
+
+        <!-- Two-column layout -->
+        <div class="dash-grid">
+
+          <!-- LEFT: Recent items -->
+          <section class="recent-section reveal">
+            <div class="section-header">
+              <h2>Recently saved</h2>
+              <a href="items.html" class="see-all">View all →</a>
+            </div>
+            <div class="recent-list" id="recent-list">
+              <!-- populated by JS -->
+            </div>
+          </section>
+
+          <!-- RIGHT: Daily Rediscovery + Quick Access -->
+          <aside class="dash-aside">
+
+            <!-- Daily Rediscovery -->
+            <div class="rediscovery-card reveal" data-delay="1">
+              <div class="rediscovery-header">
+                <span class="rediscovery-eyebrow">
+                  <span class="pulse-dot"></span>
+                  Daily Rediscovery
+                </span>
+                <button class="rediscovery-refresh" id="refresh-rediscovery" aria-label="Random pick">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12a9 9 0 11-3-6.7L21 8M21 3v5h-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              </div>
+              <div class="rediscovery-content" id="rediscovery-content">
+                <p class="rediscovery-quote">"Something you saved — waiting for you."</p>
+                <span class="rediscovery-meta">— COMMONPLACE</span>
+              </div>
+            </div>
+
+            <!-- Quick Access -->
+            <div class="quick-access reveal" data-delay="2">
+              <h3 class="aside-title">Quick access</h3>
+              <div class="quick-links">
+                <button class="quick-link" data-type="quote">
+                  <span class="quick-icon tag-quote">"</span>
+                  <span>Add a Quote</span>
+                </button>
+                <button class="quick-link" data-type="idea">
+                  <span class="quick-icon tag-idea">✦</span>
+                  <span>Save an Idea</span>
+                </button>
+                <button class="quick-link" data-type="article">
+                  <span class="quick-icon tag-article">§</span>
+                  <span>Save an Article</span>
+                </button>
+                <button class="quick-link" data-type="note">
+                  <span class="quick-icon tag-note">✎</span>
+                  <span>Write a Note</span>
+                </button>
+              </div>
+            </div>
+
+          </aside>
+
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- ═══════════ QUICK ADD MODAL ═══════════ -->
+  <div class="modal-overlay" id="quick-add-modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-header">
+        <h3 id="modal-title">Quick Add</h3>
+        <button class="modal-close" id="close-quick-add" aria-label="Close">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+
+      <div class="modal-type-tabs">
+        <button class="type-tab active" data-type="quote">Quote</button>
+        <button class="type-tab" data-type="idea">Idea</button>
+        <button class="type-tab" data-type="article">Article</button>
+        <button class="type-tab" data-type="note">Note</button>
+      </div>
+
+      <form id="quick-add-form" class="modal-form">
+        <div class="field" id="field-content">
+          <label for="add-content" id="content-label">Quote</label>
+          <textarea id="add-content" rows="4" placeholder="Paste or write here..." required></textarea>
+        </div>
+        <div class="field" id="field-author">
+          <label for="add-author">Author / Source <span class="optional">(optional)</span></label>
+          <input type="text" id="add-author" placeholder="Charles Eames" />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" id="cancel-add">Cancel</button>
+          <button type="submit" class="btn btn-primary">
+            <span class="btn-text">Save</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="../js/dashboard.js"></script>
+</body>
+</html>

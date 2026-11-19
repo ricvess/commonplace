@@ -1,0 +1,205 @@
+/* ══════════════════════════════════════════════════════════════
+   COLLECTIONS PAGE
+   ══════════════════════════════════════════════════════════════ */
+
+[hidden] { display: none !important; }
+
+/* ─── Header & Jarak ke Folder ─── */
+.items-header {
+  margin-bottom: var(--s-5); /* Ini pengatur jarak ke folder. s-5 = 32px */
+}
+
+.page-title {
+  font-family: var(--font-editorial); /* Pakai font Georgia */
+  font-style: italic;
+  font-size: 2.5rem; /* Dibuat lebih besar biar elegan */
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.page-desc {
+  font-family: var(--font-body);
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  max-width: 400px; /* Biar teksnya tidak terlalu panjang ke kanan */
+}
+
+.collections-grid {
+  display: grid;
+  /* Ukuran kartu lebih kecil (260px) */
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--s-4);
+  align-items: start;
+}
+
+/* ─── Collection Card ─── */
+.collection-card {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: var(--s-4); /* Padding lebih kecil */
+  transition: all 0.4s var(--ease);
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 160px; /* Lebih pendek */
+  overflow: hidden;
+}
+
+/* Efek hover: terangkat & border menghijau */
+.collection-card:hover {
+  border-color: var(--sage);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Garis aksen di atas saat di-hover */
+.collection-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--sage);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease);
+}
+.collection-card:hover::before {
+  transform: scaleX(1);
+}
+
+.collection-icon {
+  width: 36px; /* Ikon lebih kecil */
+  height: 36px;
+  border-radius: var(--r-sm);
+  background: var(--bg-alt);
+  color: var(--sage-dark);
+  display: grid;
+  place-items: center;
+  margin-bottom: var(--s-4); /* Jarak ikon ke teks lebih lega */
+  transition: all 0.4s var(--ease);
+}
+
+.collection-card:hover .collection-icon {
+  background: var(--sage);
+  color: var(--warm-white);
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.collection-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Font Fancy (Editorial) untuk Judul */
+.collection-name {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: var(--s-2);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.collection-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: var(--s-5); /* Jarak deskripsi ke meta */
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.collection-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--line);
+  padding-top: var(--s-3);
+  margin-top: auto; /* Memaksa meta selalu di paling bawah */
+}
+
+.public-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--bg-alt);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ─── Actions (Edit/Delete) ─── */
+.collection-actions {
+  position: absolute;
+  top: var(--s-3);
+  right: var(--s-3);
+  display: flex;
+  gap: 0.25rem;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: all 0.3s var(--ease);
+}
+
+.collection-card:hover .collection-actions {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.action-btn {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  color: var(--text-muted);
+  width: 28px;
+  height: 28px;
+  border-radius: var(--r-sm);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.action-btn:hover {
+  background: var(--bg-alt);
+  color: var(--text);
+}
+
+.action-btn.delete:hover {
+  background: #FDF2F0;
+  color: #C97A6E;
+  border-color: #FDF2F0;
+}
+
+/* ─── Empty State ─── */
+.collections-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--s-8) var(--s-4);
+  border: 1px dashed var(--line);
+  border-radius: var(--r-md);
+  color: var(--text-muted);
+}
+
+.collections-empty svg {
+  width: 40px;
+  height: 40px;
+  margin-bottom: var(--s-3);
+  color: var(--warm-gray);
+}
