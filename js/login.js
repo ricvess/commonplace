@@ -117,7 +117,9 @@ if (forgotForm) {
 
     // Mengirim email reset via Supabase
     // Ganti URL di bawah ini jika kamu sudah deploy (misal: https://domainkamu.vercel.app/pages/reset-password.html)
-    const redirectUrl = `${window.location.origin}/pages/reset-password.html`;
+    // Mengambil base URL secara dinamis agar cocok di localhost maupun GitHub Pages
+    const baseUrl = window.location.href.split('/pages/')[0];
+    const redirectUrl = `${baseUrl}/pages/reset-password.html`;
 
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
       redirectTo: redirectUrl,
