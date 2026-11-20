@@ -1,0 +1,124 @@
+/* ══════════════════════════════════════════════════════════════
+   ALL ITEMS PAGE
+   ══════════════════════════════════════════════════════════════ */
+
+.items-header {
+  margin-bottom: var(--s-5);
+}
+
+.page-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
+}
+
+.page-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* ─── Filter Tabs ─── */
+.filter-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: var(--s-5);
+  overflow-x: auto;
+  padding-bottom: 0.5rem; /* Biar scrollbar tidak motong */
+}
+
+.filter-tab {
+  padding: 0.5rem 1rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+  white-space: nowrap;
+}
+
+.filter-tab:hover {
+  border-color: var(--warm-gray);
+  color: var(--text);
+}
+
+.filter-tab.active {
+  background: var(--charcoal);
+  border-color: var(--charcoal);
+  color: var(--warm-white);
+}
+
+/* ─── Items Grid ─── */
+.items-grid {
+  display: grid;
+  /* Menggunakan auto-fit agar jika item sedikit, ukurannya tidak aneh */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--s-4);
+  align-items: start;
+}
+
+/* Tambahkan ini agar 1 kartu tidak melar selebar layar jika sendirian */
+.items-grid .item-card {
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Menyesuaikan item-card dari dashboard.css agar pas di grid */
+.items-grid .item-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+}
+
+.items-grid .item-body {
+  flex-grow: 1;
+}
+
+/* ─── Tombol Action (Edit/Delete) ─── */
+.item-actions {
+  display: flex;
+  gap: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.item-card:hover .item-actions {
+  opacity: 1;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+  transition: all 0.2s;
+}
+
+.action-btn:hover {
+  background: var(--bg-alt);
+  color: var(--text);
+}
+
+.action-btn.delete:hover {
+  background: #FDF2F0;
+  color: #C97A6E;
+}
+
+/* ─── Empty State Khusus Items ─── */
+.items-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--s-8) var(--s-4);
+  border: 1px dashed var(--line);
+  border-radius: var(--r-md);
+  color: var(--text-muted);
+}

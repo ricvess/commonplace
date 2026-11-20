@@ -1,0 +1,124 @@
+[hidden] { display: none !important; }
+
+/* Quote of the Day (Kartu Utama) */
+.qotd-section {
+  padding: var(--s-7) var(--s-6);
+  border: 1px solid var(--line);
+  border-radius: 16px; /* iOS style rounded */
+  margin-bottom: var(--s-8);
+  background: var(--charcoal);
+  color: var(--warm-white);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+}
+
+.qotd-section::before {
+  content: ''; position: absolute; top: -50%; left: -10%; width: 60%; height: 200%;
+  background: radial-gradient(circle, rgba(137, 150, 129, 0.2), transparent 60%);
+}
+
+.qotd-quote {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  line-height: 1.3;
+  color: #fff;
+  max-width: 800px;
+  margin-bottom: var(--s-4);
+  position: relative;
+  z-index: 1;
+}
+
+.qotd-author {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--sage);
+  margin-bottom: var(--s-5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  z-index: 1;
+}
+
+.qotd-save {
+  font-size: 0.9rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  z-index: 1;
+}
+.qotd-save:hover { background: rgba(255,255,255,0.2); transform: scale(1.05); }
+
+/* Grid Quotes */
+.explore-header { margin-bottom: var(--s-6); }
+.explore-header h2 {
+  font-family: var(--font-editorial); font-style: italic; font-size: 2rem; margin-bottom: 0.5rem;
+}
+.explore-header p { font-size: 0.95rem; color: var(--text-muted); }
+
+.quotes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--s-4);
+}
+
+/* Kartu Quote ala iOS / Masonry */
+.quote-card {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: var(--s-5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 200px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+  animation: cardEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardEnter {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.quote-card:hover {
+  border-color: var(--sage);
+  transform: translateY(-4px) scale(1.01) !important;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+}
+
+.quote-card blockquote {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--text);
+  margin-bottom: var(--s-4);
+}
+
+.quote-card footer { display: flex; justify-content: space-between; align-items: center; }
+
+.quote-card .author {
+  font-size: 0.8rem; color: var(--text-muted); font-weight: 500;
+}
+
+/* Tombol Save ala iOS pill */
+.save-quote {
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: var(--bg-alt);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.save-quote:hover { background: var(--charcoal); color: #fff; border-color: var(--charcoal); }
+.save-quote:active { transform: scale(0.9); }
+.save-quote.saved { background: var(--sage); color: #fff; border-color: var(--sage); cursor: default; }

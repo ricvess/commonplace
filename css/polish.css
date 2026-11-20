@@ -1,0 +1,119 @@
+/* ══════════════════════════════════════════════════════════════
+   iOS GLOBAL TRANSITIONS & POLISH
+   ══════════════════════════════════════════════════════════════ */
+
+/* Transisi masuk halaman */
+body {
+  animation: bodyFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes bodyFadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Tombol iOS Springy Effect */
+.btn {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.btn:active {
+  transform: scale(0.95) !important;
+}
+
+/* Card Hover melayang halus */
+.item-card, .collection-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.3s ease !important;
+}
+
+/* Sembunyikan Scrollbar tapi tetap bisa discroll (iOS style) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.1);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.2); }
+
+/* Pastikan reveal tidak error */
+.reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+
+/* ══════════════════════════════════════════════════════════════
+   EDITORIAL POLISH (Anti-AI Look)
+   ══════════════════════════════════════════════════════════════ */
+
+/* 1. Hilangkan sudut membulat ala AI (kembali ke tajam/tegas) */
+.card, .feature-card, .item-card, .collection-card,
+.settings-card, .stat-card, .modal, .rediscovery-card,
+.qotd-section, .quote-card {
+  border-radius: 2px !important;
+}
+
+/* 2. Hapus efek glow/gradient lebay yang bikin kelihatan generatif */
+.hero-glow, .brand-orbs, .rediscovery-card::before {
+  display: none !important;
+}
+
+/* 3. Tipografi lebih tegas (mencegah teks menggantung di 1 kata) */
+h1, h2, h3, blockquote {
+  text-wrap: balance;
+}
+
+/* 4. Animasi Scroll: Lebih lambat, halus, dan elegan */
+.reveal {
+  transform: translateY(24px);
+  transition-duration: 1.2s;
+  transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* 5. Hover State: Jangan pakai efek "terangkat ke atas" (khas AI). 
+      Cukup beri border tegas seperti buku fisik. */
+.item-card:hover,
+.collection-card:hover,
+.feature-card:hover {
+  transform: none !important;
+  border-color: var(--text) !important;
+  box-shadow: none !important;
+}
+
+/* 7. Perbaikan Mobile: Tombol Edit/Delete selalu terlihat di HP */
+@media (max-width: 768px) {
+  .item-actions, .collection-actions {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .dash-grid {
+    gap: var(--s-4);
+  }
+}
+
+/* 8. Warna seleksi teks biar estetik */
+::selection {
+  background: var(--sage);
+  color: var(--warm-white);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   PAGE TRANSITION OVERLAY (iOS Style - No White Flash)
+   ══════════════════════════════════════════════════════════════ */
+.page-transition-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg); /* Mengikuti warna background (putih/cream) */
+  z-index: 99999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Sedikit sentuhan blur khas iOS */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.page-transition-overlay.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
